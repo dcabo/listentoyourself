@@ -6,6 +6,6 @@ Uses [Chrome i18n API](https://developer.chrome.com/extensions/i18n) to detect t
 
 ###TODO
 
-* Localised versions
+* Improve language detection (only seems to pick English now)
 * Apply to inline tweets, not only modal box
 * Extend to other sites: Youtube, newspapers...

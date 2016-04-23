@@ -1,31 +1,34 @@
 console.log("Setting up 'listen to yourself'...");
 
+var intros = {
+  'en': 'Oh, listen to yourself: ',
+  'es': 'Oh, escúchate: '
+}
+
 var div = $('div.modal-tweet-form-container')
 var form = div.find('form');
 var button = form.find('.tweet-action');
 
 button.on("click", function(event) {
-  console.log("Oh, listen to yourself...");
+  // Get the tweet text
+  var text = form.find('.tweet-box').text();
+  console.log("Oh, listen to yourself: "+text);
 
-  // Try to detect the text language
-  var inputText = "Listen to yourself...";
-  chrome.i18n.detectLanguage(inputText, function(result) {
-    var outputLang = "Detected Language: ";
-    var outputPercent = "Language Percentage: ";
-    for(i = 0; i < result.languages.length; i++) {
-      outputLang += result.languages[i].language + " ";
-      outputPercent +=result.languages[i].percentage + " ";
+  // We try to detect the text language.
+  // It only seems to detect english, maybe I'm doing something wrong, so
+  // let's do this: if no language is detected let's assume it's Spanish
+  var language = 'es';
+  chrome.i18n.detectLanguage(text, function(result) {
+    if ( result.languages.length > 0 ) {
+      language = result.languages[0].language;
+      console.log("Detected language "+language);
     }
-    console.log(outputLang + "\n" + outputPercent + "\nReliable: " + result.isReliable);
+
+    // Say something
+    var msg = new SpeechSynthesisUtterance(intros[language]+text);
+    msg.lang=language;  // Seems to pick Diego for Spanish
+    window.speechSynthesis.speak(msg);
   });
-
-  // Say something
-  // var msg = new SpeechSynthesisUtterance('Oh, listen to yourself...');
-  // msg.lang='en-US';
-  var msg = new SpeechSynthesisUtterance('Oh, escúchate...');
-  msg.lang='es';  // Seems to pick Diego
-
-  window.speechSynthesis.speak(msg);
 
   // Don't let them tweet
   event.stopImmediatePropagation()
