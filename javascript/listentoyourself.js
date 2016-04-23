@@ -1,20 +1,11 @@
-console.log("Hello world");
+console.log("Setting up 'listen to yourself'...");
 
-var elements = document.getElementsByTagName('*');
+var div = $('div.modal-tweet-form-container')
+var form = div.find('form');
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
-
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text.replace(/millenial/gi, 'caraculo');
-
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
-            }
-        }
-    }
-}
+$('div.modal-tweet-form-container .tweet-action').on("click", function() {
+  console.log("Oh, listen to yourself...");
+  console.log(form.attr("action"));
+  form.attr("action", "");
+  console.log(form.attr("action"));
+});

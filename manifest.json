@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": ["http://twitter.com/*", "https://twitter.com/*"],
       "js": ["javascript/jquery-2.2.3.min.js", "javascript/listentoyourself.js"],
       "run_at": "document_end"
     }
