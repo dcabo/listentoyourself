@@ -2,10 +2,15 @@ console.log("Setting up 'listen to yourself'...");
 
 var div = $('div.modal-tweet-form-container')
 var form = div.find('form');
+var button = form.find('.tweet-action');
 
-$('div.modal-tweet-form-container .tweet-action').on("click", function() {
+button.on("click", function(event) {
   console.log("Oh, listen to yourself...");
-  console.log(form.attr("action"));
-  form.attr("action", "");
-  console.log(form.attr("action"));
+
+  // Say something
+  var msg = new SpeechSynthesisUtterance('Oh, listen to yourself...');
+  window.speechSynthesis.speak(msg);
+
+  // Don't let them tweet
+  event.stopImmediatePropagation()
 });

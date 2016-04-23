@@ -6,5 +6,6 @@ Development based on [Chrome guide](https://developer.chrome.com/extensions/gets
 ###TODO
 
 * Intercept default behaviour
+* Localised versions
 * Apply to inline tweets, not only modal box
 * Extend to other sites: Youtube, newspapers...
