@@ -13,11 +13,9 @@ var ok_fine = {
 }
 
 
-var div = $('div.modal-tweet-form-container')
-var form = div.find('form');
-var button = form.find('.tweet-action');
+$('div.modal-tweet-form-container .tweet-action').on("click", function(event) {
+  var form = $('div.modal-tweet-form-container form')
 
-button.on("click", function(event) {
   // Get the tweet text
   var text = form.find('.tweet-box').text();
   console.log("Oh, listen to yourself: "+text);
