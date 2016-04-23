@@ -3,7 +3,7 @@
 
   "name": "Listen to yourself",
   "description": "https://xkcd.com/481/",
-  "version": "1.0",
+  "version": "0.1",
 
   "content_scripts": [
     {
