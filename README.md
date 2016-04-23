@@ -1,0 +1,1 @@
+Based on [Chrome guide](https://developer.chrome.com/extensions/getstarted).
